@@ -22,12 +22,13 @@ playing=!playing
 }
 
 audio.addEventListener("loadedmetadata",()=>{
-duration.innerText=format(audio.duration)
+if(audio.duration){duration.innerText=format(audio.duration)
+}
 })
 
 audio.addEventListener("timeupdate",()=>{
 
-progress.value=(audio.currentTime/audio.duration)*100
+if(audio.duration)progress.value=(audio.currentTime/audio.duration)*100
 current.innerText=format(audio.currentTime)
 
 })
@@ -48,3 +49,4 @@ if(seconds<10) seconds="0"+seconds
 return minutes+":"+seconds
 
 }
+
